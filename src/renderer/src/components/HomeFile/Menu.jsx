@@ -15,9 +15,9 @@ export default function Menu() {
   const profilePic = () => {
     // Handle profile picture click
   }
-  const handleReferral = () => {
-    // Add your login logic here (e.g., validation, API calls)
-  }
+  // const handleReferral = () => {
+  //   // Add your logic here (e.g., validation, API calls)
+  // }
 
   const handleSettings = () => {
    
@@ -25,7 +25,7 @@ export default function Menu() {
   }
 
   const handleLogout = () => {
-    // Add your login logic here (e.g., validation, API calls)
+    // Add your logic here (e.g., validation, API calls)
     navigate('/signin') // Navigate to Home page
   }
 
@@ -44,9 +44,9 @@ export default function Menu() {
         {isOpen && (
           <div className="absolute left-0 mt-1 w-36 bg-white shadow-lg rounded-lg z-50">
             <ul className="text-xs">
-              <li onClick={handleReferral} className="px-2 py-2 hover:bg-gray-100 cursor-pointer">
+              {/* <li onClick={handleReferral} className="px-2 py-2 hover:bg-gray-100 cursor-pointer">
                 Referral link
-              </li>
+              </li> */}
               <li onClick={handleSettings} className="px-2 py-2 hover:bg-gray-100 cursor-pointer">
                 Settings
               </li>

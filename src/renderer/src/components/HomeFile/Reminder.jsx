@@ -10,7 +10,7 @@ export default function Reminder() {
         style={{ width: '280px' }}
       >
         <img src={reminder} alt="reminder" className="h-5" />
-        <h2 className="mx-2">Send Reminder</h2>
+        <h2 className="mx-2">Check Network Strength</h2>
       </button>
     </div>
   )

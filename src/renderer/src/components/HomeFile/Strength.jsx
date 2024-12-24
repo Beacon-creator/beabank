@@ -1,25 +1,23 @@
 import React from 'react'
+import reminder from '../../assets/reminder.svg'
 
 export default function Strength() {
   return (
-    <div className="p-2 m-5 bg-gray-100 border-white rounded-lg">
-      <div className="flex text-sm px-2 my-2">
-        <h2 className="">Network Strength: </h2>
-        <h2 className="ml-5">45%</h2>
-      </div>
-      <div className="flex text-sm pt-5 mt-5">
-        <h2 className="">Referral Strength:</h2>
-        <div className="flex">
-          <div className="ml-5">
-            <h2 className="">Active</h2>
-            <h2 className="items-center justify-center content-center">1</h2>
+    <div>
+       <div className="flex justify-center items-center my-10">
+            <button
+              className="flex items-center justify-center px-3 py-3 text-sm border-2
+               border-white rounded-lg bg-emerald-900 hover:bg-emerald-300 transition"
+              style={{ width: '280px' }}
+            >
+              <img src={reminder} alt="reminder" className="h-5" />
+              <h2 className="mx-2">Check Network Strength</h2>
+            </button>
           </div>
-
-          <hr className="bg-red-500 w-10" />
-          <div>
-            <h2 className="">Inactive</h2>
-            <h2 className="">1</h2>
-          </div>
+      <div className="p-2 m-5 bg-gray-100 border-white rounded-lg">
+        <div className="flex text-sm px-2 my-2">
+          <h2 className="">Network Strength: </h2>
+          <h2 className="ml-5">45%</h2>
         </div>
       </div>
     </div>
