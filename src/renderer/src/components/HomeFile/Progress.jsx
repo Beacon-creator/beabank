@@ -3,11 +3,23 @@ import refresh from '../../assets/refresh.svg'
 import start from '../../assets/start.png'
 
 export default function Progress() {
-  const [timer, setTimer] = useState(86400) // 24 hours in seconds
+  const [timer, setTimer] = useState(() => {
+    const storedTimer = localStorage.getItem('timer')
+    return storedTimer ? parseInt(storedTimer, 10) : 86400 // Default to 24 hours in seconds
+  })
   const [isRunning, setIsRunning] = useState(false)
-  const [balance, setBalance] = useState(0.0)
+  const [balance, setBalance] = useState(() => {
+    const storedBalance = localStorage.getItem('balance')
+    return storedBalance ? parseFloat(storedBalance) : 0.0
+  })
   const [userId, setUserId] = useState(null)
   const [isRefreshing, setIsRefreshing] = useState(false)
+
+  // Update local storage whenever timer or balance changes
+  useEffect(() => {
+    localStorage.setItem('timer', timer)
+    localStorage.setItem('balance', balance.toFixed(4))
+  }, [timer, balance])
 
   // Fetch user ID
   const fetchUserId = async () => {
@@ -111,12 +123,12 @@ export default function Progress() {
   return (
     <div className="flex-col flex items-center justify-center p-2">
       <div
-        className="p-5 m-3 rounded-lg bg-gray-300 focus:outline-none"
+        className="p-5 m-5 rounded-lg bg-gray-300 focus:outline-none"
         style={{ width: '280px', height: '150px' }}
       >
         <div className="flex text-xl">
           <h2 className="text-green-700">Current balance: </h2>
-          <h2 className='mx-2 '>{balance.toFixed(4)}</h2>
+          <h2 className="mx-2 ">{balance.toFixed(4)}</h2>
         </div>
         <div className="flex text-sm pt-5 mt-5">
           <h2 className="">Timer: </h2>
