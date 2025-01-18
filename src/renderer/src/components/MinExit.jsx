@@ -22,7 +22,7 @@ const handleMinimize = () => {
       <div className="bg-gray-400 w-screen h-3"></div>
       <div className="absolute top-1.5 right-4">
         {' '}
-        <button id="min" onClick={handleMinimize} className="w-3 h-3 mr-5 hover:bg-gray-300">
+        <button id="min" onClick={handleMinimize} className="w-4 h-3.5 mr-5 hover:bg-gray-300">
           <img src={minimize} alt="min" />
         </button>
         <button id="exit" onClick={handleClose} className="w-5 hover:bg-red-400">

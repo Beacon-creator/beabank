@@ -1,7 +1,9 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import fanalerapic from '../../assets/fanalerapic.png'
 import { faUser, faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Signup() {
@@ -14,7 +16,7 @@ export default function Signup() {
   })
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
-
+  const navigate = useNavigate()
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible)
   }
@@ -24,45 +26,47 @@ export default function Signup() {
     setFormData({ ...formData, [name]: value })
   }
 
-const handleSubmit = async (e) => {
-  e.preventDefault()
-  setError('')
-  setSuccess('')
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError('')
+    setSuccess('')
 
-  try {
-    const response = await fetch('http://localhost:3000/api/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
+    try {
+      const response = await fetch('http://localhost:3000/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
 
-    if (!response.ok) {
-      // Attempt to parse JSON error, fallback to plain text
-      const errorData = await response.json().catch(() => ({
-        message: `Error: ${response.statusText}`
-      }))
-      throw new Error(errorData.message || 'Failed to signup')
+      if (!response.ok) {
+        // Attempt to parse JSON error, fallback to plain text
+        const errorData = await response.json().catch(() => ({
+          message: `Error: ${response.statusText}`
+        }))
+        throw new Error(errorData.message || 'Failed to signup')
+      }
+
+      const data = await response.json()
+      setSuccess(data.message)
+      setFormData({ fullName: '', email: '', password: '' })
+      // Navigate to home page after login
+      navigate('/signin')
+    } catch (err) {
+      setError(err.message)
     }
-
-    const data = await response.json()
-    setSuccess(data.message)
-    setFormData({ fullName: '', email: '', password: '' })
-  } catch (err) {
-    setError(err.message)
   }
-}
 
   return (
     <div className="flex flex-col items-center justify-center bg-white-100">
-      <div className="flex justify-center my-10">
+      <div className="flex justify-center my-4">
         <img src={fanalerapic} alt="Logo" className="h-10" />
       </div>
       <div className="bg-white shadow-lg p-2 mt-10 rounded-lg">
-        <div className="text-center mb-6">
+        <div className="text-center mb-4">
           <h2 className="text-lg font-bold text-gray-800">Become a Fanalera Miner today!</h2>
-          <h5 className="text-gray-600">Signup and let's partner</h5>
+          <h5 className="text-gray-600">{`Signup and let's partner`}</h5>
         </div>
 
         {/* Error Message */}

@@ -7,8 +7,11 @@ import icon from '../../resources/icon.png?asset'
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 360,
+    height: 580,
+    icon: 'C:/Users/adebi/Documents/DesktopApp/Beabank/src/renderer/src/assets/beabank_logo.jpg',
+    resizable: false, // Prevent resizing
+    fullscreenable: false, // Disable fullscreen mode (optional)
     show: false,
     autoHideMenuBar: true,
     frame: false, // Disable default window frame
@@ -30,7 +33,7 @@ function createWindow() {
   }
 
   // Ensure window is always on top
-  mainWindow.setAlwaysOnTop(true, 'screen')
+  mainWindow.setAlwaysOnTop(false, 'screen')
 
   // Show the window when ready
   mainWindow.on('ready-to-show', () => {
@@ -57,6 +60,7 @@ function createWindow() {
       focusedWindow.minimize()
     }
   })
+
 }
 
 // App Initialization
@@ -84,5 +88,3 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
-
-

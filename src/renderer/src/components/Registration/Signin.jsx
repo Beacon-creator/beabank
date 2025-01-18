@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import fanalerapic from '../../assets/fanalerapic.png'
@@ -58,11 +59,11 @@ export default function Signin() {
 
   return (
     <div className="flex flex-col items-center justify-center bg-white-100">
-      <div className="flex justify-center my-10">
+      <div className="flex justify-center my-4">
         <img src={fanalerapic} alt="Logo" className="h-10" />
       </div>
       <div className="bg-white shadow-lg p-3 mt-10 rounded-lg">
-        <div className="text-center mb-6">
+        <div className="text-center mb-4">
           <h2 className="text-2xl font-bold text-gray-800">Start Mining</h2>
           <h5 className="text-gray-600">Login</h5>
         </div>
@@ -124,7 +125,7 @@ export default function Signin() {
 
         {/* Signup Label */}
         <div className="text-center mt-4">
-          <span className="text-gray-600">Don't have an account? </span>
+          <span className="text-gray-600">{`Do not have an account?`} </span>
           <a href="/signup" className="text-blue-600 font-semibold hover:underline">
             Signup
           </a>

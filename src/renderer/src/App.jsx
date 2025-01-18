@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 
 // Import your components
@@ -26,7 +25,6 @@ function App() {
       {/* Other components displayed outside routes */}
       {/* <div className="flex flex-col items-center">
         <Signin />
-       
       </div> */}
     </Router>
   )

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Menu from '../components/HomeFile/Menu'
 import Progress from '../components/HomeFile/Progress'
 import Strength from '../components/HomeFile/Strength'
