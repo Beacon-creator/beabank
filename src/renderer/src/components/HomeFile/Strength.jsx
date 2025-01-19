@@ -9,7 +9,7 @@ export default function Strength() {
   const fetchNetworkStrength = async () => {
     setLoading(true); // Show the spinner
     try {
-      const response = await fetch("http://localhost:3000/api/network-strength", {
+      const response = await fetch("https://beabankapi.onrender.com/api/network-strength", {
         method: "GET",
       });
 

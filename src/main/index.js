@@ -9,7 +9,6 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 360,
     height: 580,
-    icon: 'C:/Users/adebi/Documents/DesktopApp/Beabank/src/renderer/src/assets/beabank_logo.jpg',
     resizable: false, // Prevent resizing
     fullscreenable: false, // Disable fullscreen mode (optional)
     show: false,

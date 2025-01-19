@@ -25,7 +25,7 @@ export default function Progress() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/auth/user-data', {
+        const response = await fetch('https://beabankapi.onrender.com/auth/user-data', {
           method: 'GET',
           credentials: 'include',
         });
@@ -46,7 +46,7 @@ export default function Progress() {
     if (!id) return;
     
     try {
-      const response = await fetch(`http://localhost:3000/api/balance/${id}`, {
+      const response = await fetch(`https://beabankapi.onrender.com/api/balance/${id}`, {
         method: 'GET',
         credentials: 'include',
       });
@@ -93,7 +93,7 @@ export default function Progress() {
   const handleStart = async () => {
     if (!isRunning && userId) {
       try {
-        const response = await fetch(`http://localhost:3000/api/balance/update-progress`, {
+        const response = await fetch(`https://beabankapi.onrender.com/api/balance/update-progress`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
