@@ -2,12 +2,12 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import fanalerapic from '../../assets/fanalerapic.png'
-import { faUser, faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faEnvelope, faLock, faEye, faEyeSlash, faSpinner  } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 
 
 export default function Signup() {
-  // const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
   const [passwordVisible, setPasswordVisible] = useState(false)
   const [formData, setFormData] = useState({
     fullName: '',
@@ -16,7 +16,9 @@ export default function Signup() {
   })
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const navigate = useNavigate()
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible)
   }
@@ -30,6 +32,7 @@ export default function Signup() {
     e.preventDefault()
     setError('')
     setSuccess('')
+    setIsSubmitting(true)
 
     try {
       const response = await fetch('https://beabankapi.onrender.com/api/signup', {
@@ -55,6 +58,8 @@ export default function Signup() {
       navigate('/signin')
     } catch (err) {
       setError(err.message)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -134,9 +139,14 @@ export default function Signup() {
           {/* Signup Button */}
           <button
             type="submit"
-            className="w-[280px] h-[50px] bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition"
+            className="w-[280px] h-[50px] bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition flex items-center justify-center"
+            disabled={isSubmitting}
           >
-            Signup
+            {isSubmitting ? (
+              <FontAwesomeIcon icon={faSpinner} className="animate-spin" />
+            ) : (
+              'Signup'
+            )}
           </button>
         </form>
 

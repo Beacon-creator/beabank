@@ -5,7 +5,7 @@ import Home from './components/Home'
 import Signup from './components/Registration/Signup'
 import Signin from './components/Registration/Signin'
 import MinExit from './components/MinExit'
-import Settings from './components/HomeFile/Settings'
+
 
 function App() {
   return (
@@ -15,11 +15,10 @@ function App() {
 
       {/* Main Routes */}
       <Routes>
-        <Route path="/" element={<Navigate to="/home" replace />} /> {/* Default to Signin */}
+        <Route path="/" element={<Navigate to="/signin" replace />} /> {/* Default to Signin */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/settings" element={<Settings />} />
       </Routes>
 
       {/* Other components displayed outside routes */}

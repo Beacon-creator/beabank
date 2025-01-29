@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import fanalerapic from '../../assets/fanalerapic.png'
-import { faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faLock, faEye, faEyeSlash, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 
 export default function Signin() {
@@ -13,6 +13,7 @@ export default function Signin() {
   })
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const navigate = useNavigate()
 
   const togglePasswordVisibility = () => {
@@ -28,6 +29,7 @@ export default function Signin() {
     e.preventDefault()
     setError('')
     setSuccess('')
+    setIsSubmitting(true)
 
     try {
       const response = await fetch('https://beabankapi.onrender.com/api/signin', {
@@ -43,7 +45,7 @@ export default function Signin() {
         const errorData = await response.json().catch(() => ({
           message: `Error: ${response.statusText}`
         }))
-        throw new Error(errorData.message || 'Failed to login')
+        throw new Error(errorData.message || 'Login failed, check details')
       }
 
       const data = await response.json()
@@ -54,6 +56,8 @@ export default function Signin() {
       navigate('/home')
     } catch (err) {
       setError(err.message)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -117,9 +121,14 @@ export default function Signin() {
           {/* Login Button */}
           <button
             type="submit"
-            className="w-[280px] h-[50px] bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition"
+            className="w-[280px] h-[50px] bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition flex items-center justify-center"
+            disabled={isSubmitting}
           >
-            Login
+            {isSubmitting ? (
+              <FontAwesomeIcon icon={faSpinner} className="animate-spin" />
+            ) : (
+              'Signin'
+            )}
           </button>
         </form>
 

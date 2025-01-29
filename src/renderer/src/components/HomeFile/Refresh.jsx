@@ -1,6 +1,6 @@
-import  refresh  from '../../assets/refresh.svg' 
-import start from '../../assets/start.png' 
-
+/* eslint-disable prettier/prettier */
+import refresh from '../../assets/refresh.svg'
+import start from '../../assets/start.png'
 
 export default function Refresh() {
   return (
@@ -12,7 +12,7 @@ export default function Refresh() {
           console.log('Refresh button clicked')
         }}
       >
-        <img src={start} alt="start" className='h-5'/>
+        <img src={start} alt="start" className="h-5" />
       </button>
       <button
         id="refresh"
@@ -21,7 +21,7 @@ export default function Refresh() {
           console.log('Refresh button clicked')
         }}
       >
-        <img src={refresh} alt="refresh" className='h-5' />
+        <img src={refresh} alt="refresh" className="h-5" />
       </button>
     </div>
   )

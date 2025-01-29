@@ -9,6 +9,7 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 360,
     height: 580,
+    icon: '../renderer/assets/beabank_logo.png',
     resizable: false, // Prevent resizing
     fullscreenable: false, // Disable fullscreen mode (optional)
     show: false,

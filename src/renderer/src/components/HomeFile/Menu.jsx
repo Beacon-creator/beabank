@@ -18,7 +18,7 @@ export default function Menu() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:3000/auth/logout', {
+      const response = await fetch('https://beabankapi.onrender.com/auth/logout', {
         method: 'POST',
         credentials: 'include',
       });
