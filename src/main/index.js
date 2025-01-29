@@ -2,28 +2,38 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.png?asset'
+const path = require('path');
 
 function createWindow() {
+
+ // Define the icon path based on the platform
+ let iconPath;
+ switch (process.platform) {
+   case 'win32':
+     iconPath = path.join(__dirname, '../../resources/quill.ico'); // Windows
+     break;
+   default:
+     iconPath = path.join(__dirname, '../../resources/quill.png'); // Linux
+ }
+
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+   const mainWindow = new BrowserWindow({
     width: 360,
     height: 580,
-    icon: '../renderer/assets/beabank_logo.png',
-    resizable: false, // Prevent resizing
-    fullscreenable: false, // Disable fullscreen mode (optional)
+    icon: iconPath, // Use the platform-specific icon
+    resizable: false,
+    fullscreenable: false,
     show: false,
     autoHideMenuBar: true,
-    frame: false, // Disable default window frame
-    ...(process.platform === 'linux' ? { icon } : {}),
+    frame: false,
     webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
+      preload: path.join(__dirname, '../preload/index.js'),
       sandbox: false,
       nodeIntegration: false,
       contextIsolation: true,
-      webSecurity: false // Disable web security for development (not recommended for production)
+      webSecurity: false
     }
-  })
+  });
 
   // Load the React app (development or production)
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
@@ -32,7 +42,7 @@ function createWindow() {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
 
-  // Ensure window is always on top
+  //To deccide if window should always be on top
   mainWindow.setAlwaysOnTop(false, 'screen')
 
   // Show the window when ready
