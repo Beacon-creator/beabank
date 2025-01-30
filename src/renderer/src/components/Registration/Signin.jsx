@@ -87,7 +87,7 @@ export default function Signin() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="w-[280px] h-[50px] px-4 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-[280px] h-[50px] px-4 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-200"
               required
             />
             <span className="absolute top-[50%] left-3 transform -translate-y-1/2 text-gray-500">
@@ -103,7 +103,7 @@ export default function Signin() {
               value={formData.password}
               onChange={handleChange}
               placeholder="Password"
-              className="w-[280px] h-[50px] px-4 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-[280px] h-[50px] px-4 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-200"
               required
             />
             <span className="absolute top-[50%] left-3 transform -translate-y-1/2 text-gray-500">
@@ -121,7 +121,7 @@ export default function Signin() {
           {/* Login Button */}
           <button
             type="submit"
-            className="w-[280px] h-[50px] bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition flex items-center justify-center"
+            className="w-[280px] h-[50px] bg-green-800 text-white font-bold rounded-lg hover:bg-green-700 transition flex items-center justify-center"
             disabled={isSubmitting}
           >
             {isSubmitting ? (
@@ -135,7 +135,7 @@ export default function Signin() {
         {/* Signup Label */}
         <div className="text-center mt-4">
           <span className="text-gray-600">{`Do not have an account?`} </span>
-          <a href="/signup" className="text-blue-600 font-semibold hover:underline">
+          <a href="/signup" className="text-green-600 font-semibold hover:underline">
             Signup
           </a>
         </div>

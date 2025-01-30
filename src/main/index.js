@@ -3,17 +3,17 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 const path = require('path');
-
+const { autoUpdater } = require('electron-updater');
 function createWindow() {
-
+  autoUpdater.checkForUpdatesAndNotify();
  // Define the icon path based on the platform
  let iconPath;
  switch (process.platform) {
    case 'win32':
-     iconPath = path.join(__dirname, '../../resources/quill.ico'); // Windows
+     iconPath = path.join(__dirname, '../../resources/hat.ico'); // Windows
      break;
    default:
-     iconPath = path.join(__dirname, '../../resources/quill.png'); // Linux
+     iconPath = path.join(__dirname, '../../resources/hat.png'); // Linux
  }
 
   // Create the browser window.
@@ -31,7 +31,7 @@ function createWindow() {
       sandbox: false,
       nodeIntegration: false,
       contextIsolation: true,
-      webSecurity: false
+      webSecurity: true // false during development
     }
   });
 
@@ -56,14 +56,14 @@ function createWindow() {
     return { action: 'deny' }
   })
 
-  // Close, minimize, or custom window control via IPC
+  // Close the window when the renderer process is closed 
   ipcMain.on('close-window', () => {
     const focusedWindow = BrowserWindow.getFocusedWindow()
     if (focusedWindow) {
       focusedWindow.close()
     }
   })
-
+//minimize the window
   ipcMain.on('minimize-window', () => {
     const focusedWindow = BrowserWindow.getFocusedWindow()
     if (focusedWindow) {

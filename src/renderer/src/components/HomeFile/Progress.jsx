@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react'
 import refresh from '../../assets/refresh.svg'
 import start from '../../assets/start.png'

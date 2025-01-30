@@ -14,12 +14,12 @@ const handleMinimize = () => {
   return (
     <div>
       <div
-        className="bg-gray-400 w-screen h-5"
+        className="bg-green-100 w-screen h-5"
         style={{
           WebkitAppRegion: 'drag'
         }}
       ></div>
-      <div className="bg-gray-400 w-screen h-3"></div>
+      <div className="bg-green-100 w-screen h-3"></div>
       <div className="absolute top-1.5 right-4">
         {' '}
         <button id="min" onClick={handleMinimize} className="w-4 h-3.5 mr-5 hover:bg-gray-300">
